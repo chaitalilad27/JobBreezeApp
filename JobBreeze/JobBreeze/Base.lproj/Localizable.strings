@@ -6,3 +6,13 @@
 //
 
 // Localizable.strings
+
+"hello" = "Hello";
+"findYourPerfectJob" = "Find your perfect job";
+"whatAreYouLookingFor" = "what are you looking for?";
+"popularJobs" = "Popular Jobs";
+"nearbyJobs" = "Nearby Jobs";
+"showAll" = "Show All";
+"fullTime" = "Full-Time";
+"partTime" = "Part-Time";
+"contractor" = "Contractor";
