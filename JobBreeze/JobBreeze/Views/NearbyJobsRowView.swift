@@ -9,23 +9,22 @@ import SwiftUI
 
 struct NearbyJobsRowView: View {
 
+    var jobDetails: JobDetailsDataModel
+
     var body: some View {
         HStack(spacing: 10) {
-            Image(systemName: "pencil")
-                .resizable()
-                .frame(width: 30, height: 30)
-                .padding()
-                .background(Color.appWhiteColor)
-                .cornerRadius(CustomSize.medium.rawValue)
+            ImageView(imageURL: jobDetails.employerLogo ?? "", placeHolderImageName: "", size: 50, placeholderImageSize: 40, cornerRadius: CustomSize.medium.rawValue)
 
             VStack(alignment: .leading) {
-                Text("Job name")
-                    .font(.poppins(.bold, size: .large))
+                Text(jobDetails.jobTitle ?? "")
+                    .font(.poppins(.bold, size: .medium))
                     .foregroundColor(.appPrimaryColor)
+                    .lineLimit(1)
 
-                Text("Company name")
+                Text((jobDetails.jobEmploymentType?.rawValue ?? "").capitalized)
                     .font(.poppins(.regular, size: .medium))
                     .foregroundColor(.appGrayColor)
+                    .lineLimit(1)
             }
 
             Spacer()
@@ -38,6 +37,6 @@ struct NearbyJobsRowView: View {
 
 struct NearbyJobsRowView_Previews: PreviewProvider {
     static var previews: some View {
-        NearbyJobsRowView()
+        NearbyJobsRowView(jobDetails: JobDetailsDataModel(employerName: "", employerLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Costco_Wholesale_logo_2010-10-26.svg/2560px-Costco_Wholesale_logo_2010-10-26.svg.png", jobID: "", jobEmploymentType: .contractor, jobTitle: "Stocker", jobDescription: "", jobCountry: "", jobGoogleLink: "", jobRequiredSkills: [], jobHighlights: .init(qualifications: [])))
     }
 }

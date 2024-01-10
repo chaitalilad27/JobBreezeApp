@@ -1,6 +1,6 @@
 //
 //  HomeView.swift
-//  Tasks
+//  JobBreeze
 //
 //  Created by Chaitali Lad on 02/01/24.
 //
@@ -9,9 +9,13 @@ import SwiftUI
 
 struct HomeView: View {
 
+    @ObservedObject private var homeViewModel = HomeViewModel()
+
     @State private var searchText: String = ""
     @State private var jobTypes = JobType.allCases
-    @State private var activeJobType: JobType = .fullTime
+    @State private var activeJobType: JobEmploymentType = .fullTime
+    @State private var popularJobs: [JobDetailsDataModel] = []
+    @State private var nearByJobs: [JobDetailsDataModel] = []
 
     // MARK: - Body
 
@@ -21,14 +25,20 @@ struct HomeView: View {
                 WelcomeView
                 SearchView
                 JobTypeSelectionView
-                JobsView(name: NSLocalizedString("popularJobs", comment: ""))
-                JobsView(name: NSLocalizedString("nearbyJobs", comment: ""))
+                JobsView(name: JobType.popularJobs.rawValue)
+                JobsView(name: JobType.nearbyJobs.rawValue)
                 Spacer()
             })
         }
         .padding(CustomSize.medium.rawValue)
         .background(Color.appLightWhiteColor.ignoresSafeArea(.all))
+        .onAppear {
+            fetchJobs(type: JobType.popularJobs.rawValue) {
+                fetchJobs(type: JobType.nearbyJobs.rawValue) {
 
+                }
+            }
+        }
     }
 
     private var WelcomeView: some View {
@@ -99,7 +109,7 @@ struct HomeView: View {
                     .foregroundColor(.appGrayColor)
             }
 
-            if name == NSLocalizedString("popularJobs", comment: "") {
+            if name == JobType.popularJobs.rawValue {
                 PopularJobsList
             } else {
                 NearbyJobsList
@@ -110,8 +120,11 @@ struct HomeView: View {
     private var PopularJobsList: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: CustomSize.medium.rawValue) {
-                ForEach(jobTypes, id: \.rawValue) { jobType in
-                    PopularJobsRowView()
+                ForEach(popularJobs, id: \.jobID) { job in
+                    PopularJobsRowView(jobDetails: job)
+                        .onTapGesture {
+
+                        }
                 }
             }
         }
@@ -120,9 +133,30 @@ struct HomeView: View {
     private var NearbyJobsList: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: CustomSize.medium.rawValue) {
-                ForEach(jobTypes, id: \.rawValue) { jobType in
-                    NearbyJobsRowView()
+                ForEach(nearByJobs, id: \.jobID) { job in
+                    NearbyJobsRowView(jobDetails: job)
+                        .onTapGesture {
+                            
+                        }
                 }
+            }
+        }
+    }
+
+    func fetchJobs(type: String, completion: @escaping () -> Void) {
+        homeViewModel.fetchData(type: type.trimmingCharacters(in: .whitespaces)) { result in
+            switch result {
+            case .success(let data):
+                // Handle the received data
+                if type == JobType.popularJobs.rawValue {
+                    popularJobs = data
+                } else {
+                    nearByJobs = data
+                }
+                completion()
+            case .failure(let error):
+                // Handle the error
+                print("API request failed with error: \(error.errorMessage)")
             }
         }
     }

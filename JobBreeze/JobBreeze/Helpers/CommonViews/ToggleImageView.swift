@@ -1,6 +1,6 @@
 //
 //  ToggleImageView.swift
-//  Tasks
+//  JobBreeze
 //
 //  Created by Chaitali Lad on 04/01/24.
 //

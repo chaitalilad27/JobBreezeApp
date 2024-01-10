@@ -1,6 +1,6 @@
 //
 //  FontExtension.swift
-//  NewsFlasher
+//  JobBreeze
 //
 //  Created by Chaitali Lad on 19/06/23.
 //

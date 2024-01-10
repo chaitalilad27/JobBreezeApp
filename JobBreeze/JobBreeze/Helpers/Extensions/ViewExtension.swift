@@ -1,6 +1,6 @@
 //
 //  ViewExtension.swift
-//  NewsFlasher
+//  JobBreeze
 //
 //  Created by Chaitali Lad on 12/07/23.
 //

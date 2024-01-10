@@ -8,6 +8,20 @@
 import Foundation
 
 enum JobType: CaseIterable {
+    case popularJobs
+    case nearbyJobs
+
+    var rawValue: String {
+        switch self {
+        case .popularJobs:
+            return NSLocalizedString("popularJobs", comment: "")
+        case .nearbyJobs:
+            return NSLocalizedString("nearbyJobs", comment: "")
+        }
+    }
+}
+
+enum JobEmployementType: CaseIterable {
     case fullTime
     case partTime
     case contractor

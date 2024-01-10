@@ -9,29 +9,29 @@ import SwiftUI
 
 struct PopularJobsRowView: View {
 
+    var jobDetails: JobDetailsDataModel
+
     var body: some View {
 
         HStack {
             VStack(alignment: .leading) {
-                Image(systemName: "pencil")
-                    .resizable()
-                    .frame(width: 30, height: 30)
-                    .padding()
-                    .background(Color.appWhiteColor)
-                    .cornerRadius(CustomSize.medium.rawValue)
+                ImageView(imageURL: jobDetails.employerLogo ?? "", placeHolderImageName: "", size: 30, placeholderImageSize: 25, cornerRadius: CustomSize.medium.rawValue)
 
-                Text("Company name")
+                Text(jobDetails.employerName ?? "")
                     .font(.poppins(.regular, size: .medium))
                     .foregroundColor(.appGray2Color)
+                    .lineLimit(1)
                     .padding(.bottom, 5)
 
-                Text("Job name")
+                Text(jobDetails.jobTitle ?? "")
                     .font(.poppins(.medium, size: .large))
                     .foregroundColor(.appPrimaryColor)
+                    .lineLimit(1)
 
-                Text("US")
+                Text(jobDetails.jobCountry ?? "")
                     .font(.poppins(.regular, size: .medium))
                     .foregroundColor(.appGray2Color)
+                    .lineLimit(1)
             }
 
             Spacer()
@@ -45,6 +45,6 @@ struct PopularJobsRowView: View {
 
 struct PopularJobsRowView_Previews: PreviewProvider {
     static var previews: some View {
-        PopularJobsRowView()
+        PopularJobsRowView(jobDetails: JobDetailsDataModel(employerName: "LinkedIn", employerLogo: "", jobID: "", jobEmploymentType: .contractor, jobTitle: "", jobDescription: "", jobCountry: "", jobGoogleLink: "", jobRequiredSkills: [], jobHighlights: .init(qualifications: [])))
     }
 }

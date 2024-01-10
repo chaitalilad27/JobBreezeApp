@@ -1,6 +1,6 @@
 //
 //  DateFormatter.swift
-//  NewsFlasher
+//  JobBreeze
 //
 //  Created by Chaitali Lad on 13/07/23.
 //
