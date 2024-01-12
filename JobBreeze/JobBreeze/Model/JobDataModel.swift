@@ -56,10 +56,21 @@ struct JobDetailsDataModel: Decodable {
     }
 }
 
-enum JobEmploymentType: String, Codable {
+enum JobEmploymentType: String, Codable, CaseIterable {
     case contractor = "CONTRACTOR"
     case fulltime = "FULLTIME"
     case parttime = "PARTTIME"
+
+    var rawValue: String {
+        switch self {
+        case .fulltime:
+            return NSLocalizedString("fullTime", comment: "")
+        case .parttime:
+            return NSLocalizedString("partTime", comment: "")
+        case .contractor:
+            return NSLocalizedString("contractor", comment: "")
+        }
+    }
 }
 
 // MARK: - JobHighlights

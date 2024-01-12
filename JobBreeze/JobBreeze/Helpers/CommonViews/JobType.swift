@@ -21,19 +21,19 @@ enum JobType: CaseIterable {
     }
 }
 
-enum JobEmployementType: CaseIterable {
-    case fullTime
-    case partTime
-    case contractor
+enum JobDetailsTabsType: CaseIterable {
+    case about
+    case qualifications
+    case responsibilities
 
     var rawValue: String {
         switch self {
-        case .fullTime:
-            return NSLocalizedString("fullTime", comment: "")
-        case .partTime:
-            return NSLocalizedString("partTime", comment: "")
-        case .contractor:
-            return NSLocalizedString("contractor", comment: "")
+        case .about:
+            return NSLocalizedString("about", comment: "")
+        case .qualifications:
+            return NSLocalizedString("qualifications", comment: "")
+        case .responsibilities:
+            return NSLocalizedString("responsibilities", comment: "")
         }
     }
 }

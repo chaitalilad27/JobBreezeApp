@@ -15,7 +15,7 @@ struct PopularJobsRowView: View {
 
         HStack {
             VStack(alignment: .leading) {
-                ImageView(imageURL: jobDetails.employerLogo ?? "", placeHolderImageName: "", size: 30, placeholderImageSize: 25, cornerRadius: CustomSize.medium.rawValue)
+                ImageView(imageURL: jobDetails.employerLogo ?? "", placeHolderImageName: "jobPlaceholder", size: 30, placeholderImageSize: 25, cornerRadius: CustomSize.medium.rawValue)
 
                 Text(jobDetails.employerName ?? "")
                     .font(.poppins(.regular, size: .medium))

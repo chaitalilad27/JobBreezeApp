@@ -65,7 +65,14 @@ extension View {
             .toolbarBackground(.visible, for: .navigationBar)  // Make the navigation bar background visible
     }
 
-    func shadowStyle(isSmall: Bool) -> some View {
-        self.shadow(color: .black.opacity(0.25), radius: isSmall ? 3.84 : 5.84, x: 0, y: 2)
+    // MARK: - Button Style Extension
+
+    func tabButtonStyle(selected: Bool) -> some View {
+        self
+            .padding(.vertical, CustomSize.medium.rawValue)
+            .padding(.horizontal, CustomSize.large.rawValue)
+            .foregroundColor(.appGray2Color)
+            .background(selected ? Color.appPrimaryColor : Color.appWhiteColor)
+            .cornerRadius(CustomSize.medium.rawValue)
     }
 }

@@ -13,7 +13,7 @@ struct NearbyJobsRowView: View {
 
     var body: some View {
         HStack(spacing: 10) {
-            ImageView(imageURL: jobDetails.employerLogo ?? "", placeHolderImageName: "", size: 50, placeholderImageSize: 40, cornerRadius: CustomSize.medium.rawValue)
+            ImageView(imageURL: jobDetails.employerLogo ?? "", placeHolderImageName: "jobPlaceholder", size: 50, placeholderImageSize: 40, cornerRadius: CustomSize.medium.rawValue)
 
             VStack(alignment: .leading) {
                 Text(jobDetails.jobTitle ?? "")

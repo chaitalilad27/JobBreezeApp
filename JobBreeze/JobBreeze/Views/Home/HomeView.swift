@@ -10,32 +10,33 @@ import SwiftUI
 struct HomeView: View {
 
     @ObservedObject private var homeViewModel = HomeViewModel()
-
     @State private var searchText: String = ""
-    @State private var jobTypes = JobType.allCases
-    @State private var activeJobType: JobEmploymentType = .fullTime
+    @State private var jobEmployementTypes = JobEmploymentType.allCases
+    @State private var activeJobType: JobEmploymentType = .fulltime
     @State private var popularJobs: [JobDetailsDataModel] = []
     @State private var nearByJobs: [JobDetailsDataModel] = []
 
     // MARK: - Body
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: CustomSize.xLarge.rawValue, content: {
-                WelcomeView
-                SearchView
-                JobTypeSelectionView
-                JobsView(name: JobType.popularJobs.rawValue)
-                JobsView(name: JobType.nearbyJobs.rawValue)
-                Spacer()
-            })
-        }
-        .padding(CustomSize.medium.rawValue)
-        .background(Color.appLightWhiteColor.ignoresSafeArea(.all))
-        .onAppear {
-            fetchJobs(type: JobType.popularJobs.rawValue) {
-                fetchJobs(type: JobType.nearbyJobs.rawValue) {
-
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: CustomSize.xLarge.rawValue, content: {
+                    WelcomeView
+                    SearchView
+                    JobTypeSelectionView
+                    JobsView(name: JobType.popularJobs.rawValue)
+                    JobsView(name: JobType.nearbyJobs.rawValue)
+                    Spacer()
+                })
+            }
+            .padding(CustomSize.medium.rawValue)
+            .background(Color.appLightWhiteColor.ignoresSafeArea(.all))
+            .onAppear {
+                fetchJobs(type: JobType.popularJobs.rawValue) {
+//                    fetchJobs(type: JobType.nearbyJobs.rawValue) {
+//
+//                    }
                 }
             }
         }
@@ -76,7 +77,7 @@ struct HomeView: View {
     private var JobTypeSelectionView: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: CustomSize.medium.rawValue) {
-                ForEach(jobTypes, id: \.rawValue) { jobType in
+                ForEach(jobEmployementTypes, id: \.rawValue) { jobType in
                     Button {
                         activeJobType = jobType
                     } label: {
@@ -121,10 +122,11 @@ struct HomeView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: CustomSize.medium.rawValue) {
                 ForEach(popularJobs, id: \.jobID) { job in
-                    PopularJobsRowView(jobDetails: job)
-                        .onTapGesture {
-
-                        }
+                    NavigationLink {
+                        JobDetailsView(jobDetails: job)
+                    } label: {
+                        PopularJobsRowView(jobDetails: job)
+                    }
                 }
             }
         }
@@ -134,17 +136,19 @@ struct HomeView: View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: CustomSize.medium.rawValue) {
                 ForEach(nearByJobs, id: \.jobID) { job in
-                    NearbyJobsRowView(jobDetails: job)
-                        .onTapGesture {
-                            
-                        }
+                    NavigationLink {
+                        JobDetailsView(jobDetails: job)
+                    } label: {
+                        NearbyJobsRowView(jobDetails: job)
+                    }
                 }
             }
         }
     }
 
     func fetchJobs(type: String, completion: @escaping () -> Void) {
-        homeViewModel.fetchData(type: type.trimmingCharacters(in: .whitespaces)) { result in
+        let string = String(type.filter { !" ".contains($0) })
+        homeViewModel.fetchData(type: string) { result in
             switch result {
             case .success(let data):
                 // Handle the received data
