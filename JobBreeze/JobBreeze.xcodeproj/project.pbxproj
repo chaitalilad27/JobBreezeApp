@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5257CAF32B4E2299001E4AA8 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257CAF22B4E2299001E4AA8 /* ImageView.swift */; };
 		5257CAF62B4E22E4001E4AA8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5257CAF52B4E22E4001E4AA8 /* Kingfisher */; };
+		5257CAFA2B4F286D001E4AA8 /* JobDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257CAF92B4F286D001E4AA8 /* JobDetailsView.swift */; };
 		527972502B4C6DF0008BCD2F /* JobBreezeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5279724F2B4C6DF0008BCD2F /* JobBreezeApp.swift */; };
 		527972542B4C6DF9008BCD2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527972532B4C6DF9008BCD2F /* Assets.xcassets */; };
 		527972572B4C6DF9008BCD2F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527972562B4C6DF9008BCD2F /* Preview Assets.xcassets */; };
@@ -17,15 +18,20 @@
 		527972832B4C8C6A008BCD2F /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527972752B4C8C6A008BCD2F /* FontExtension.swift */; };
 		527972842B4C8C6A008BCD2F /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527972762B4C8C6A008BCD2F /* ViewExtension.swift */; };
 		527972852B4C8C6A008BCD2F /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527972772B4C8C6A008BCD2F /* ColorExtension.swift */; };
-		527972862B4C8C6A008BCD2F /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527972782B4C8C6A008BCD2F /* DateFormatterExtension.swift */; };
 		527972872B4C8C6A008BCD2F /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5279727A2B4C8C6A008BCD2F /* Poppins-Medium.ttf */; };
 		527972882B4C8C6A008BCD2F /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5279727B2B4C8C6A008BCD2F /* Poppins-Regular.ttf */; };
 		527972892B4C8C6A008BCD2F /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5279727C2B4C8C6A008BCD2F /* Poppins-Bold.ttf */; };
-		5279729C2B4C8C93008BCD2F /* AppAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5279728B2B4C8C92008BCD2F /* AppAlert.swift */; };
 		5279729D2B4C8C93008BCD2F /* ToggleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5279728D2B4C8C92008BCD2F /* ToggleImageView.swift */; };
 		5279729E2B4C8C93008BCD2F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5279728E2B4C8C92008BCD2F /* CustomTextField.swift */; };
 		527972A02B4C8C93008BCD2F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 527972912B4C8C92008BCD2F /* Localizable.strings */; };
 		527972A52B4C8C93008BCD2F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5279729A2B4C8C92008BCD2F /* HomeView.swift */; };
+		52AB73292B51CFF800D8608E /* JobDetailsTabsTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AB73282B51CFF800D8608E /* JobDetailsTabsTitleView.swift */; };
+		52AB732B2B51D03900D8608E /* JobDetailsTabsDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AB732A2B51D03900D8608E /* JobDetailsTabsDetailsView.swift */; };
+		52AB732F2B520D9000D8608E /* JobListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AB732E2B520D9000D8608E /* JobListView.swift */; };
+		52AB73322B52117300D8608E /* SwiftUIPullToRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 52AB73312B52117300D8608E /* SwiftUIPullToRefresh */; };
+		52AB73342B5212DD00D8608E /* JobListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AB73332B5212DD00D8608E /* JobListViewModel.swift */; };
+		52AB73362B53366000D8608E /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AB73352B53366000D8608E /* EmptyStateView.swift */; };
+		52AB733B2B55A9B600D8608E /* APIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AB733A2B55A9B600D8608E /* APIConfig.swift */; };
 		52AE01ED2B4DD8F300D03C4C /* PopularJobsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AE01EA2B4DD8F300D03C4C /* PopularJobsRowView.swift */; };
 		52AE01EE2B4DD8F300D03C4C /* JobType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AE01EB2B4DD8F300D03C4C /* JobType.swift */; };
 		52AE01EF2B4DD8F300D03C4C /* NearbyJobsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AE01EC2B4DD8F300D03C4C /* NearbyJobsRowView.swift */; };
@@ -37,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		5257CAF22B4E2299001E4AA8 /* ImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		5257CAF92B4F286D001E4AA8 /* JobDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailsView.swift; sourceTree = "<group>"; };
 		5279724C2B4C6DF0008BCD2F /* JobBreeze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobBreeze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5279724F2B4C6DF0008BCD2F /* JobBreezeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobBreezeApp.swift; sourceTree = "<group>"; };
 		527972532B4C6DF9008BCD2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -47,15 +54,19 @@
 		527972752B4C8C6A008BCD2F /* FontExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		527972762B4C8C6A008BCD2F /* ViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		527972772B4C8C6A008BCD2F /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
-		527972782B4C8C6A008BCD2F /* DateFormatterExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
 		5279727A2B4C8C6A008BCD2F /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		5279727B2B4C8C6A008BCD2F /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		5279727C2B4C8C6A008BCD2F /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
-		5279728B2B4C8C92008BCD2F /* AppAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAlert.swift; sourceTree = "<group>"; };
 		5279728D2B4C8C92008BCD2F /* ToggleImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToggleImageView.swift; sourceTree = "<group>"; };
 		5279728E2B4C8C92008BCD2F /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		527972922B4C8C92008BCD2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Localizable.strings; sourceTree = "<group>"; };
 		5279729A2B4C8C92008BCD2F /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		52AB73282B51CFF800D8608E /* JobDetailsTabsTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailsTabsTitleView.swift; sourceTree = "<group>"; };
+		52AB732A2B51D03900D8608E /* JobDetailsTabsDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailsTabsDetailsView.swift; sourceTree = "<group>"; };
+		52AB732E2B520D9000D8608E /* JobListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobListView.swift; sourceTree = "<group>"; };
+		52AB73332B5212DD00D8608E /* JobListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobListViewModel.swift; sourceTree = "<group>"; };
+		52AB73352B53366000D8608E /* EmptyStateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		52AB733A2B55A9B600D8608E /* APIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfig.swift; sourceTree = "<group>"; };
 		52AE01EA2B4DD8F300D03C4C /* PopularJobsRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularJobsRowView.swift; sourceTree = "<group>"; };
 		52AE01EB2B4DD8F300D03C4C /* JobType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobType.swift; sourceTree = "<group>"; };
 		52AE01EC2B4DD8F300D03C4C /* NearbyJobsRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyJobsRowView.swift; sourceTree = "<group>"; };
@@ -70,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52AB73322B52117300D8608E /* SwiftUIPullToRefresh in Frameworks */,
 				5257CAF62B4E22E4001E4AA8 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,6 +114,7 @@
 				52AE01FB2B4DE9A800D03C4C /* ViewModels */,
 				527972982B4C8C92008BCD2F /* Views */,
 				52AE01F62B4DDDC200D03C4C /* Model */,
+				52AB733C2B55C57F00D8608E /* Config */,
 				5279726C2B4C8C6A008BCD2F /* Helpers */,
 				527972902B4C8C92008BCD2F /* Base.lproj */,
 				527972552B4C6DF9008BCD2F /* Preview Content */,
@@ -131,8 +144,7 @@
 		5279726E2B4C8C6A008BCD2F /* CommonViews */ = {
 			isa = PBXGroup;
 			children = (
-				52AE01EB2B4DD8F300D03C4C /* JobType.swift */,
-				5279728B2B4C8C92008BCD2F /* AppAlert.swift */,
+				52AB73352B53366000D8608E /* EmptyStateView.swift */,
 				5257CAF22B4E2299001E4AA8 /* ImageView.swift */,
 				5279726F2B4C8C6A008BCD2F /* ToastMessageView.swift */,
 				527972722B4C8C6A008BCD2F /* ActivityIndicatorView.swift */,
@@ -148,7 +160,6 @@
 				527972752B4C8C6A008BCD2F /* FontExtension.swift */,
 				527972762B4C8C6A008BCD2F /* ViewExtension.swift */,
 				527972772B4C8C6A008BCD2F /* ColorExtension.swift */,
-				527972782B4C8C6A008BCD2F /* DateFormatterExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -175,17 +186,54 @@
 			isa = PBXGroup;
 			children = (
 				52AE01F22B4DDAB400D03C4C /* Launch Screen.storyboard */,
+				52AB732D2B51D59600D8608E /* Home */,
+				52AB732C2B51D58900D8608E /* JobDetails */,
+				52AB73372B559EF500D8608E /* JobList */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		52AB732C2B51D58900D8608E /* JobDetails */ = {
+			isa = PBXGroup;
+			children = (
+				5257CAF92B4F286D001E4AA8 /* JobDetailsView.swift */,
+				52AB73282B51CFF800D8608E /* JobDetailsTabsTitleView.swift */,
+				52AB732A2B51D03900D8608E /* JobDetailsTabsDetailsView.swift */,
+			);
+			path = JobDetails;
+			sourceTree = "<group>";
+		};
+		52AB732D2B51D59600D8608E /* Home */ = {
+			isa = PBXGroup;
+			children = (
 				5279729A2B4C8C92008BCD2F /* HomeView.swift */,
 				52AE01EC2B4DD8F300D03C4C /* NearbyJobsRowView.swift */,
 				52AE01EA2B4DD8F300D03C4C /* PopularJobsRowView.swift */,
 			);
-			path = Views;
+			path = Home;
+			sourceTree = "<group>";
+		};
+		52AB73372B559EF500D8608E /* JobList */ = {
+			isa = PBXGroup;
+			children = (
+				52AB732E2B520D9000D8608E /* JobListView.swift */,
+			);
+			path = JobList;
+			sourceTree = "<group>";
+		};
+		52AB733C2B55C57F00D8608E /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				52AB733A2B55A9B600D8608E /* APIConfig.swift */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 		52AE01F62B4DDDC200D03C4C /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				52AE01F72B4DDF8400D03C4C /* JobDataModel.swift */,
+				52AE01EB2B4DD8F300D03C4C /* JobType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -194,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				52AE01F92B4DE9A400D03C4C /* HomeViewModel.swift */,
+				52AB73332B5212DD00D8608E /* JobListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -216,6 +265,7 @@
 			name = JobBreeze;
 			packageProductDependencies = (
 				5257CAF52B4E22E4001E4AA8 /* Kingfisher */,
+				52AB73312B52117300D8608E /* SwiftUIPullToRefresh */,
 			);
 			productName = JobBreeze;
 			productReference = 5279724C2B4C6DF0008BCD2F /* JobBreeze.app */;
@@ -247,6 +297,7 @@
 			mainGroup = 527972432B4C6DF0008BCD2F;
 			packageReferences = (
 				5257CAF42B4E22E4001E4AA8 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				52AB73302B52117300D8608E /* XCRemoteSwiftPackageReference "swiftui-pull-to-refresh" */,
 			);
 			productRefGroup = 5279724D2B4C6DF0008BCD2F /* Products */;
 			projectDirPath = "";
@@ -284,18 +335,23 @@
 				527972842B4C8C6A008BCD2F /* ViewExtension.swift in Sources */,
 				5279729D2B4C8C93008BCD2F /* ToggleImageView.swift in Sources */,
 				52AE01F82B4DDF8400D03C4C /* JobDataModel.swift in Sources */,
-				5279729C2B4C8C93008BCD2F /* AppAlert.swift in Sources */,
 				5257CAF32B4E2299001E4AA8 /* ImageView.swift in Sources */,
-				527972862B4C8C6A008BCD2F /* DateFormatterExtension.swift in Sources */,
+				52AB73342B5212DD00D8608E /* JobListViewModel.swift in Sources */,
+				52AB73292B51CFF800D8608E /* JobDetailsTabsTitleView.swift in Sources */,
 				5279727E2B4C8C6A008BCD2F /* ToastMessageView.swift in Sources */,
+				52AB732F2B520D9000D8608E /* JobListView.swift in Sources */,
 				52AE01EF2B4DD8F300D03C4C /* NearbyJobsRowView.swift in Sources */,
 				527972832B4C8C6A008BCD2F /* FontExtension.swift in Sources */,
 				52AE01ED2B4DD8F300D03C4C /* PopularJobsRowView.swift in Sources */,
 				527972502B4C6DF0008BCD2F /* JobBreezeApp.swift in Sources */,
 				527972A52B4C8C93008BCD2F /* HomeView.swift in Sources */,
 				52AE01EE2B4DD8F300D03C4C /* JobType.swift in Sources */,
+				52AB73362B53366000D8608E /* EmptyStateView.swift in Sources */,
+				52AB732B2B51D03900D8608E /* JobDetailsTabsDetailsView.swift in Sources */,
 				52AE01F52B4DDD7A00D03C4C /* APIManager.swift in Sources */,
+				5257CAFA2B4F286D001E4AA8 /* JobDetailsView.swift in Sources */,
 				527972812B4C8C6A008BCD2F /* ActivityIndicatorView.swift in Sources */,
+				52AB733B2B55A9B600D8608E /* APIConfig.swift in Sources */,
 				527972852B4C8C6A008BCD2F /* ColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -530,6 +586,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		52AB73302B52117300D8608E /* XCRemoteSwiftPackageReference "swiftui-pull-to-refresh" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/globulus/swiftui-pull-to-refresh";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -537,6 +601,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5257CAF42B4E22E4001E4AA8 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		52AB73312B52117300D8608E /* SwiftUIPullToRefresh */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 52AB73302B52117300D8608E /* XCRemoteSwiftPackageReference "swiftui-pull-to-refresh" */;
+			productName = SwiftUIPullToRefresh;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

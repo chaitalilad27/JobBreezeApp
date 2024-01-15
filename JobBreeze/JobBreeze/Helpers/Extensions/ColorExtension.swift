@@ -13,12 +13,9 @@ extension Color {
     // MARK: - Custom App Colors
 
     static let appThemeColor = Color("AppTheme")
-    static let appLightRedColor = Color("AppLightRed")
     static let appLightBlueColor = Color("AppLightBlue")
-    static let appDarkBlueColor = Color("AppDarkBlue")
     static let appPrimaryColor = Color("AppPrimary")
     static let appSecondaryColor = Color("AppSecondary")
-    static let appTertiaryColor = Color("AppTertiary")
     static let appGrayColor = Color("AppGray")
     static let appGray2Color = Color("AppGray2")
     static let appWhiteColor = Color("AppWhite")

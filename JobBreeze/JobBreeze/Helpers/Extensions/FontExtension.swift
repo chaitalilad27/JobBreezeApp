@@ -27,7 +27,6 @@ extension Font {
     }
 
     static func poppins(_ type: PoppinsFont, size: CustomSize) -> Font {
-        print(type.value)
         return .custom(type.value, size: size.rawValue)
     }
 }
