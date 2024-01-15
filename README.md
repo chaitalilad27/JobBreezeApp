@@ -6,8 +6,8 @@ Welcome to JobBreeze, an iOS application designed to enhance your job search exp
 -----------
 - **Job List:** Browse popular and nearby jobs through a paginated view for a smoother experience. 
 - **Job Search:** Easily search for jobs based on your preferences.
-- **Job Categories:** Explore jobs categorized by employment type like full-time, part-time, contractor.
-- **Detailed Job Information:** View detailed information about each job, including description, qualifications, responsibilities, and apply via a redirect link to respective job portal.
+- **Job Categories:** Explore jobs categorized by employment type like full-time, part-time, or contractor.
+- **Detailed Job Information:** View detailed information about each job, including description, qualifications, and responsibilities, and apply via a redirect link to the respective job portal.
 - **Favorites:** Like your preferred jobs.
 - **Other Features:**
     - **Pull-to-Refresh:** Update the job list with a simple pull-to-refresh functionality.
@@ -38,7 +38,7 @@ Welcome to JobBreeze, an iOS application designed to enhance your job search exp
 - **Views**: Different views like `LaunchScreen`, `HomeView`, `JobListView`, `JobDetailsView`, etc.
 - **ViewModels**: View models that handle the app's logic, such as `HomeViewModel` and `JobListViewModel`.
 - **Helpers**: Utility classes and extensions used throughout the app.
-    - **CommonViews**: Common views and reusable UI components, such as `EmptyStateView`, `ActivityIndicatorView`, `ImageView`, `CustomTextField`, `ToggleImageView` and `ToastMessageView`.
+    - **CommonViews**: Common views and reusable UI components, such as `EmptyStateView`, `ActivityIndicatorView`, `ImageView`, `CustomTextField`, `ToggleImageView`, and `ToastMessageView`.
     - **Fonts**: Custom font files used in the app.
     - **APIManager**: Responsible for handling API requests and responses.
     - **Extensions**: Different extensions to extend the functionality of existing classes and types, including extensions for `Color`, `Font`, and `View`.
