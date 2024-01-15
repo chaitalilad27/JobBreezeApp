@@ -9,37 +9,35 @@ import SwiftUI
 
 struct HomeView: View {
 
-    @ObservedObject private var homeViewModel = HomeViewModel()
-    @State private var searchText: String = ""
-    @State private var jobEmployementTypes = JobEmploymentType.allCases
-    @State private var activeJobType: JobEmploymentType = .fulltime
-    @State private var popularJobs: [JobDetailsDataModel] = []
-    @State private var nearByJobs: [JobDetailsDataModel] = []
+    // MARK: - Properties
+
+    @ObservedObject private var viewModel = HomeViewModel()
 
     // MARK: - Body
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: CustomSize.xLarge.rawValue, content: {
-                    WelcomeView
-                    SearchView
-                    JobTypeSelectionView
-                    JobsView(name: JobType.popularJobs.rawValue)
-                    JobsView(name: JobType.nearbyJobs.rawValue)
-                    Spacer()
-                })
-            }
-            .padding(CustomSize.medium.rawValue)
-            .background(Color.appLightWhiteColor.ignoresSafeArea(.all))
-            .onAppear {
-                fetchJobs(type: JobType.popularJobs.rawValue) {
-//                    fetchJobs(type: JobType.nearbyJobs.rawValue) {
-//
-//                    }
-                }
+            MainView
+        }
+    }
+
+    // MARK: - Subviews
+
+    private var MainView: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: CustomSize.xLarge.rawValue) {
+                WelcomeView
+                SearchView
+                JobTypeSelectionView
+                JobsView(name: JobType.popularJobs.rawValue)
+                JobsView(name: JobType.nearbyJobs.rawValue)
+                Spacer()
             }
         }
+        .padding(CustomSize.medium.rawValue)
+        .toast(isPresented: $viewModel.showToast, message: viewModel.toastMessage)
+        .background(Color.appLightWhiteColor.ignoresSafeArea(.all))
+        .navigationBarStyle(title: "Job Breeze", displayMode: .inline)
     }
 
     private var WelcomeView: some View {
@@ -56,41 +54,46 @@ struct HomeView: View {
 
     private var SearchView: some View {
         HStack {
-            CustomTextField(placeholder: NSLocalizedString("whatAreYouLookingFor", comment: ""), text: $searchText, font: .poppins(.regular, size: .medium), height: 60, backgroundColor: .appWhiteColor, cornerRadius: CustomSize.medium.rawValue)
+            CustomTextField(placeholder: NSLocalizedString("whatAreYouLookingFor", comment: ""),
+                            text: $viewModel.searchText,
+                            font: .poppins(.regular, size: .medium),
+                            height: 60,
+                            backgroundColor: .appWhiteColor,
+                            cornerRadius: CustomSize.medium.rawValue)
 
             Spacer()
 
-            Button {
-
+            NavigationLink {
+                JobListView(viewModel: .init(String(viewModel.searchText.filter { !" ".contains($0) })))
             } label: {
                 Image(systemName: "magnifyingglass")
                     .resizable()
                     .frame(width: 25, height: 25)
                     .foregroundColor(.appWhiteColor)
+                    .padding(CustomSize.medium.rawValue)
+                    .background(Color.appPrimaryColor)
+                    .cornerRadius(CustomSize.xxLarge.rawValue)
             }
-            .padding(CustomSize.medium.rawValue)
-            .background(Color.appDarkBlueColor)
-            .cornerRadius(CustomSize.xxLarge.rawValue)
         }
     }
 
     private var JobTypeSelectionView: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: CustomSize.medium.rawValue) {
-                ForEach(jobEmployementTypes, id: \.rawValue) { jobType in
-                    Button {
-                        activeJobType = jobType
+                ForEach(viewModel.jobEmploymentTypes, id: \.rawValue) { jobType in
+                    NavigationLink {
+                        JobListView(viewModel: .init(String(jobType.rawValue.filter { !" -".contains($0) })))
                     } label: {
                         Text(jobType.rawValue)
                             .font(.poppins(.medium, size: .medium))
+                            .padding(.vertical, CustomSize.xSmall.rawValue)
+                            .padding(.horizontal, CustomSize.medium.rawValue)
+                            .foregroundColor(.appGray2Color)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: CustomSize.xxLarge.rawValue)
+                                    .strokeBorder(Color.appGray2Color, lineWidth: 1)
+                            )
                     }
-                    .padding(.vertical, CustomSize.xSmall.rawValue)
-                    .padding(.horizontal, CustomSize.medium.rawValue)
-                    .foregroundColor(activeJobType == jobType ? .appPrimaryColor : .appGray2Color)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: CustomSize.xxLarge.rawValue)
-                            .strokeBorder(activeJobType == jobType ? Color.appPrimaryColor : Color.appGray2Color, lineWidth: 1)
-                    )
                 }
             }
         }
@@ -105,9 +108,13 @@ struct HomeView: View {
 
                 Spacer()
 
-                Text(NSLocalizedString("showAll", comment: ""))
-                    .font(.poppins(.medium, size: .medium))
-                    .foregroundColor(.appGrayColor)
+                NavigationLink {
+                    JobListView(viewModel: .init(String(name.filter { !" ".contains($0) })))
+                } label: {
+                    Text(NSLocalizedString("showAll", comment: ""))
+                        .font(.poppins(.medium, size: .medium))
+                        .foregroundColor(.appGrayColor)
+                }
             }
 
             if name == JobType.popularJobs.rawValue {
@@ -117,50 +124,61 @@ struct HomeView: View {
             }
         }
     }
-
+    
     private var PopularJobsList: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: CustomSize.medium.rawValue) {
-                ForEach(popularJobs, id: \.jobID) { job in
-                    NavigationLink {
-                        JobDetailsView(jobDetails: job)
-                    } label: {
-                        PopularJobsRowView(jobDetails: job)
+        Group {
+            if viewModel.popularJobs.count > 0 {
+                VStack {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: CustomSize.medium.rawValue) {
+                            ForEach(viewModel.popularJobs, id: \.jobID) { job in
+                                NavigationLink {
+                                    JobDetailsView(jobDetails: job)
+                                } label: {
+                                    PopularJobsRowView(jobDetails: job)
+                                }
+                            }
+                        }
                     }
                 }
+            } else if viewModel.isFetchingData {
+                ActivityIndicatorView()
+            } else {
+                EmptyStateView(
+                    content: $viewModel.popularJobsEmptyStateContent,
+                    retryAction: {
+                        viewModel.fetchJobs(type: JobType.popularJobs.rawValue, completion: { })
+                    }
+                )
             }
         }
     }
 
     private var NearbyJobsList: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack(spacing: CustomSize.medium.rawValue) {
-                ForEach(nearByJobs, id: \.jobID) { job in
-                    NavigationLink {
-                        JobDetailsView(jobDetails: job)
-                    } label: {
-                        NearbyJobsRowView(jobDetails: job)
+        Group {
+            if viewModel.nearByJobs.count > 0 {
+                VStack {
+                    ScrollView(.vertical, showsIndicators: false) {
+                        VStack(spacing: CustomSize.medium.rawValue) {
+                            ForEach(viewModel.nearByJobs, id: \.jobID) { job in
+                                NavigationLink {
+                                    JobDetailsView(jobDetails: job)
+                                } label: {
+                                    NearbyJobsRowView(jobDetails: job)
+                                }
+                            }
+                        }
                     }
                 }
-            }
-        }
-    }
-
-    func fetchJobs(type: String, completion: @escaping () -> Void) {
-        let string = String(type.filter { !" ".contains($0) })
-        homeViewModel.fetchData(type: string) { result in
-            switch result {
-            case .success(let data):
-                // Handle the received data
-                if type == JobType.popularJobs.rawValue {
-                    popularJobs = data
-                } else {
-                    nearByJobs = data
-                }
-                completion()
-            case .failure(let error):
-                // Handle the error
-                print("API request failed with error: \(error.errorMessage)")
+            } else if viewModel.isFetchingData {
+                ActivityIndicatorView()
+            } else {
+                EmptyStateView(
+                    content: $viewModel.nearByJobsEmptyStateContent,
+                    retryAction: {
+                        viewModel.fetchJobs(type: JobType.nearbyJobs.rawValue, completion: { })
+                    }
+                )
             }
         }
     }

@@ -21,12 +21,11 @@ struct JobDetailsDataModel: Decodable {
     var employerName: String?
     var employerLogo: String?
     var jobID: String
-    var jobEmploymentType: JobEmploymentType?
+    var jobEmploymentType: String?
     var jobTitle: String?
     var jobDescription: String?
     var jobCountry: String?
     var jobGoogleLink: String?
-    var jobRequiredSkills: [String]?
     var jobHighlights: JobHighlights?
 
     enum CodingKeys: String, CodingKey {
@@ -38,48 +37,6 @@ struct JobDetailsDataModel: Decodable {
         case jobDescription = "job_description"
         case jobCountry = "job_country"
         case jobGoogleLink = "job_google_link"
-        case jobRequiredSkills = "job_required_skills"
         case jobHighlights = "job_highlights"
-    }
-
-    init(employerName: String, employerLogo: String, jobID: String, jobEmploymentType: JobEmploymentType, jobTitle: String, jobDescription: String, jobCountry: String, jobGoogleLink: String, jobRequiredSkills: [String], jobHighlights: JobHighlights) {
-        self.employerName = employerName
-        self.employerLogo = employerLogo
-        self.jobID = jobID
-        self.jobEmploymentType = jobEmploymentType
-        self.jobTitle = jobTitle
-        self.jobDescription = jobDescription
-        self.jobCountry = jobCountry
-        self.jobGoogleLink = jobGoogleLink
-        self.jobRequiredSkills = jobRequiredSkills
-        self.jobHighlights = jobHighlights
-    }
-}
-
-enum JobEmploymentType: String, Codable, CaseIterable {
-    case contractor = "CONTRACTOR"
-    case fulltime = "FULLTIME"
-    case parttime = "PARTTIME"
-
-    var rawValue: String {
-        switch self {
-        case .fulltime:
-            return NSLocalizedString("fullTime", comment: "")
-        case .parttime:
-            return NSLocalizedString("partTime", comment: "")
-        case .contractor:
-            return NSLocalizedString("contractor", comment: "")
-        }
-    }
-}
-
-// MARK: - JobHighlights
-struct JobHighlights: Codable {
-    var qualifications, responsibilities, benefits: [String]?
-
-    enum CodingKeys: String, CodingKey {
-        case qualifications = "Qualifications"
-        case responsibilities = "Responsibilities"
-        case benefits = "Benefits"
     }
 }

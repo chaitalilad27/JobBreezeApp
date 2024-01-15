@@ -9,34 +9,67 @@ import SwiftUI
 
 struct NearbyJobsRowView: View {
 
+    // MARK: - Properties
+
     var jobDetails: JobDetailsDataModel
+
+    // MARK: - Body
 
     var body: some View {
         HStack(spacing: 10) {
-            ImageView(imageURL: jobDetails.employerLogo ?? "", placeHolderImageName: "jobPlaceholder", size: 50, placeholderImageSize: 40, cornerRadius: CustomSize.medium.rawValue)
-
-            VStack(alignment: .leading) {
-                Text(jobDetails.jobTitle ?? "")
-                    .font(.poppins(.bold, size: .medium))
-                    .foregroundColor(.appPrimaryColor)
-                    .lineLimit(1)
-
-                Text((jobDetails.jobEmploymentType?.rawValue ?? "").capitalized)
-                    .font(.poppins(.regular, size: .medium))
-                    .foregroundColor(.appGrayColor)
-                    .lineLimit(1)
-            }
-
+            EmployerLogoView
+            JobDetailsView
             Spacer()
         }
         .padding(CustomSize.medium.rawValue)
         .background(Color.white)
         .cornerRadius(CustomSize.medium.rawValue)
     }
+
+    // MARK: - Subviews
+
+    private var EmployerLogoView: some View {
+        ImageView (
+            imageURL: jobDetails.employerLogo ?? "",
+            placeHolderImageName: "jobPlaceholder",
+            size: 50,
+            placeholderImageSize: 40,
+            cornerRadius: CustomSize.medium.rawValue
+        )
+
+    }
+
+    private var JobDetailsView: some View {
+        VStack(alignment: .leading) {
+            Text(jobDetails.jobTitle ?? "")
+                .font(.poppins(.bold, size: .medium))
+                .foregroundColor(.appPrimaryColor)
+                .lineLimit(1)
+
+            Text((jobDetails.jobEmploymentType ?? "").capitalized)
+                .font(.poppins(.regular, size: .medium))
+                .foregroundColor(.appGrayColor)
+                .lineLimit(1)
+        }
+    }
 }
 
 struct NearbyJobsRowView_Previews: PreviewProvider {
     static var previews: some View {
-        NearbyJobsRowView(jobDetails: JobDetailsDataModel(employerName: "", employerLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Costco_Wholesale_logo_2010-10-26.svg/2560px-Costco_Wholesale_logo_2010-10-26.svg.png", jobID: "", jobEmploymentType: .contractor, jobTitle: "Stocker", jobDescription: "", jobCountry: "", jobGoogleLink: "", jobRequiredSkills: [], jobHighlights: .init(qualifications: [])))
+        NearbyJobsRowView(
+            jobDetails: JobDetailsDataModel(
+                employerName: "TEKsystems",
+                employerLogo: "https://www.teksystems.com/-/media/teksystems/images/logos/teksystems-logo.svg?iar=0&rev=7059329eede9499a9965f7b1d91cc97f",
+                jobID: "iXki4pXSSRwAAAAAAAAAAA==",
+                jobEmploymentType: "FULLTIME",
+                jobTitle: "Python Developer (W2)",
+                jobDescription: "Description:\n\nPython Developer in Houston Texas. W2 only. Contract. Hybrid.\n\nSkills:\n\nPython, React, Linux, Unix, API",
+                jobCountry: "US",
+                jobGoogleLink: "https://www.google.com/search?gl=us&hl=en&q=iXki4pXSSRwAAAAAAAAAAA%3D%3D&cs=1&ibp=htl;jobs#fpstate=tldetail&htivrt=jobs&htiq=iXki4pXSSRwAAAAAAAAAAA%3D%3D&htidocid=iXki4pXSSRwAAAAAAAAAAA%3D%3D",
+                jobHighlights: JobHighlights(qualifications: [
+                    "Python, React, Linux, Unix, API"
+                ])
+            )
+        )
     }
 }

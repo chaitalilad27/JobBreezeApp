@@ -17,12 +17,12 @@ struct JobDetailsTabsDetailsView: View {
     // MARK: - Body
 
     var body: some View {
-        mainSection
+        mainView
     }
 
-    // MARK: - Sections
+    // MARK: - Subviews
 
-    private var mainSection: some View {
+    private var mainView: some View {
         Group {
             Text(titleText)
                 .font(.poppins(.bold, size: .large))

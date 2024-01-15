@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - JobType
 enum JobType: CaseIterable {
     case popularJobs
     case nearbyJobs
@@ -21,6 +22,36 @@ enum JobType: CaseIterable {
     }
 }
 
+// MARK: - JobEmploymentType
+enum JobEmploymentType: String, Codable, CaseIterable {
+    case contractor = "CONTRACTOR"
+    case fulltime = "FULLTIME"
+    case parttime = "PARTTIME"
+
+    var rawValue: String {
+        switch self {
+        case .fulltime:
+            return NSLocalizedString("fullTime", comment: "")
+        case .parttime:
+            return NSLocalizedString("partTime", comment: "")
+        case .contractor:
+            return NSLocalizedString("contractor", comment: "")
+        }
+    }
+}
+
+// MARK: - JobHighlights
+struct JobHighlights: Codable {
+    var qualifications, responsibilities, benefits: [String]?
+
+    enum CodingKeys: String, CodingKey {
+        case qualifications = "Qualifications"
+        case responsibilities = "Responsibilities"
+        case benefits = "Benefits"
+    }
+}
+
+// MARK: - JobDetailsTabsType
 enum JobDetailsTabsType: CaseIterable {
     case about
     case qualifications
