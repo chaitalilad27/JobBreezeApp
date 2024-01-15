@@ -114,6 +114,7 @@
 				52AE01FB2B4DE9A800D03C4C /* ViewModels */,
 				527972982B4C8C92008BCD2F /* Views */,
 				52AE01F62B4DDDC200D03C4C /* Model */,
+				52AB733C2B55C57F00D8608E /* Config */,
 				5279726C2B4C8C6A008BCD2F /* Helpers */,
 				527972902B4C8C92008BCD2F /* Base.lproj */,
 				527972552B4C6DF9008BCD2F /* Preview Content */,
@@ -132,7 +133,6 @@
 		5279726C2B4C8C6A008BCD2F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				52AB733A2B55A9B600D8608E /* APIConfig.swift */,
 				52AE01F42B4DDD7A00D03C4C /* APIManager.swift */,
 				5279726E2B4C8C6A008BCD2F /* CommonViews */,
 				527972742B4C8C6A008BCD2F /* Extensions */,
@@ -219,6 +219,14 @@
 				52AB732E2B520D9000D8608E /* JobListView.swift */,
 			);
 			path = JobList;
+			sourceTree = "<group>";
+		};
+		52AB733C2B55C57F00D8608E /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				52AB733A2B55A9B600D8608E /* APIConfig.swift */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 		52AE01F62B4DDDC200D03C4C /* Model */ = {
